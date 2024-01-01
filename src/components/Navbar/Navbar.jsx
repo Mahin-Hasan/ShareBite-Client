@@ -1,7 +1,19 @@
 import { Link, NavLink } from "react-router-dom";
 import icon from '../../assets/logo.png'
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
+import { IoIosLogOut } from "react-icons/io";
+
 
 const Navbar = () => {
+    const { user, logOut } = useContext(AuthContext);
+
+    //Lot out
+    const handleLogOut = () => {
+        logOut()
+            .then()
+            .catch()
+    }
 
     const navbarlinks = <>
         <li className="text-base font-semibold"><NavLink to='/'
@@ -56,9 +68,29 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="navbar-end">
-                        <Link to='/login'>
-                            <button className="px-7 py-2 font-semibold rounded bg-blue-600 text-gray-50">Log in</button>
-                        </Link>
+                        {
+                            user ?
+                                <div className="flex items-center">
+                                    <div className="relative flex-shrink-0">
+                                        <span className="absolute bottom-0 right-0 w-4 h-4 bg-green-600 border rounded-full text-gray-800 border-gray-50"></span>
+                                        <img src={user.photoURL} alt="" className="w-12 h-12 border rounded-full bg-gray-500 border-gray-300" />
+                                    </div>
+                                    <p className="ms-1 mr-0 sm:mr-3 font-mono font-semibold text-sm sm:text-xl text-yellow-700">{user.displayName}</p>
+                                    <Link className="" onClick={handleLogOut} to='/login'><span className="flex items-center bg-red-500 rounded-md p-2 text-white">
+                                        <IoIosLogOut className="text-2xl font-extrabold" />
+                                        <button className="hidden sm:inline">
+                                            Logout
+                                        </button>
+                                    </span>
+                                    </Link>
+                                </div>
+                                :
+                                <Link to='/login'>
+                                    <button className="px-7 py-2 font-semibold rounded bg-blue-600 text-gray-50">Log in</button>
+                                </Link>
+                        }
+
+
                     </div>
                 </div>
             </div>

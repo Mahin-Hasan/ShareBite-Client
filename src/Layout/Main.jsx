@@ -9,7 +9,7 @@ const Main = () => {
             <div>
                 <Navbar></Navbar>
             </div>
-            <div className='mt-24'>
+            <div className='mt-[90px]'>
                 <Outlet></Outlet>
             </div>
             <div>
