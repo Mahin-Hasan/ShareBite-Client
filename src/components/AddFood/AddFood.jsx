@@ -57,7 +57,6 @@ const AddFood = () => {
 
     }
 
-
     return (
         <div>
             <h1 className="my-10">This is add food</h1>
@@ -106,10 +105,10 @@ const AddFood = () => {
                         <label className="label py-1 text-yellow-600 text-lg font-medium">
                             Expired Date/Time
                         </label>
-                        {/* <input type="datetime-local" id="expiredDateTime" name="expiredDateTime" className="form-input" required /> */}
-                        <input type="number" id="expiredDateTime" name="expiredDateTime"
+                        <input type="date" id="expiredDateTime" name="expiredDateTime"  className="input input-bordered bg-[#fefff7] w-full rounded-lg py-2" required />
+                        {/* <input type="number" id="expiredDateTime" name="expiredDateTime"
                             className="input input-bordered bg-[#fefff7] w-full rounded-lg py-2"
-                            required />
+                            required /> */}
                     </div>
                     <div>
                         <label className="label py-1 text-yellow-600 text-lg font-medium">

@@ -1,13 +1,14 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../components/Home/Home";
-import AvailableFood from "../components/AvailableFood/AvailableFood";
+import AvailableFoods from "../components/AvailableFoods/AvailableFoods";
 import AddFood from "../components/AddFood/AddFood";
 import ManageFood from "../components/ManageFood/ManageFood";
 import FoodRequest from "../components/FoodRequest/FoodRequest";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import PrivateRoute from "./PrivateRoute";
+import FoodDetails from "../components/FoodDetails/FoodDetails";
 
 const router = createBrowserRouter([
     {
@@ -16,7 +17,8 @@ const router = createBrowserRouter([
         children: [
             {
                 path: "/",
-                element: <Home></Home>
+                element: <Home></Home>,
+                loader: () => fetch('http://localhost:5000/foods')
             },
             {
                 path: "/login",
@@ -28,7 +30,13 @@ const router = createBrowserRouter([
             },
             {
                 path: "/availableFoods",
-                element: <AvailableFood></AvailableFood>
+                element: <AvailableFoods></AvailableFoods>,
+                loader: () => fetch('http://localhost:5000/foods')
+            },
+            {
+                path: "/food/:id",
+                element: <PrivateRoute><FoodDetails></FoodDetails></PrivateRoute>,
+                loader: ({ params }) => fetch(`http://localhost:5000/foods/${params.id}`)
             },
             {
                 path: "/addFood",
