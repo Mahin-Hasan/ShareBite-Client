@@ -42,18 +42,46 @@ const FoodDetails = () => {
         const donationAmount = e.target.donationAmount.value;
         console.log(additionalInfo, donationAmount);
 
-        const requestedFood = { foodName, foodImage, foodId, userEmail, userName, requestedDate, pickupLocation, expiredDateTime, additionalInfo,loggedUserEmail, donationAmount }
+        const requestedFood = { foodName, foodImage, foodId, userEmail, userName, requestedDate, pickupLocation, expiredDateTime, additionalInfo, loggedUserEmail, donationAmount }
         console.log(requestedFood);
-        axios.post('http://localhost:5000/requests',requestedFood)
-        .then(data=>{
-            console.log(data.data);
-            if(data.data.insertedId){
-                toast.success('Selected Food Requested', {
-                    position: "top-right", 
-                    autoClose: 3000, 
-                  });
-            }
+        axios.post('http://localhost:5000/requests', requestedFood)
+            .then(data => {
+                console.log(data.data);
+                if (data.data.insertedId) {
+                    toast.success('Selected Food Requested', {
+                        position: "top-right",
+                        autoClose: 3000,
+                    });
+                }
+            })
+
+
+        //change food request status on request
+        // fetch(`http://localhost:5000/foods/${_id}`, {
+        //     method: 'PATCH',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify({ 
+        //         foodStatus: 'pending' })
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         console.log(data);
+        //     }
+        fetch(`http://localhost:5000/foods/${_id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify({
+                foodStatus: 'pending',
+            }),
         })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+            });
     }
     return (
         <div className="container mx-auto">
@@ -64,7 +92,7 @@ const FoodDetails = () => {
             <p>Food Expiration: {expiredDateTime}</p>
             {/* Trying modal */}
             {/* Open the modal using document.getElementById('ID').showModal() method */}
-            <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>open modal</button>
+            <button className="btn" onClick={() => document.getElementById('my_modal_1').showModal()}>Request Food</button>
             <dialog id="my_modal_1" className="modal">
                 <div className="modal-box">
                     <div className="card bg-base-100 p-8">
