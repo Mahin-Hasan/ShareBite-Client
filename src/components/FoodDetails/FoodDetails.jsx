@@ -30,7 +30,10 @@ const FoodDetails = () => {
     const requestedDate = currentDate.toLocaleDateString(); //Current Id
     const foodId = _id; // foodId
     const loggedUserEmail = user?.email;
-
+    const loggedUserPhoto = user?.photoURL;
+    const requesterName = user?.displayName;
+    const foodRequestStatus = 'pending';
+    console.log(foodRequestStatus);
     //additional notes
     //donation money
 
@@ -42,7 +45,7 @@ const FoodDetails = () => {
         const donationAmount = e.target.donationAmount.value;
         console.log(additionalInfo, donationAmount);
 
-        const requestedFood = { foodName, foodImage, foodId, userEmail, userName, requestedDate, pickupLocation, expiredDateTime, additionalInfo, loggedUserEmail, donationAmount }
+        const requestedFood = { foodName, foodImage, foodId, userEmail, userName, requestedDate, pickupLocation, expiredDateTime, additionalInfo, loggedUserEmail, loggedUserPhoto, requesterName, donationAmount, foodRequestStatus }
         console.log(requestedFood);
         axios.post('http://localhost:5000/requests', requestedFood)
             .then(data => {
@@ -69,19 +72,22 @@ const FoodDetails = () => {
         //     .then(data => {
         //         console.log(data);
         //     }
-        fetch(`http://localhost:5000/foods/${_id}`, {
-            method: 'PATCH',
-            headers: {
-                'content-type': 'application/json',
-            },
-            body: JSON.stringify({
-                foodStatus: 'pending',
-            }),
-        })
-            .then((res) => res.json())
-            .then((data) => {
-                console.log(data);
-            });
+
+
+        //commenting previously added to wrong database
+        // fetch(`http://localhost:5000/foods/${_id}`, {
+        //     method: 'PATCH',
+        //     headers: {
+        //         'content-type': 'application/json',
+        //     },
+        //     body: JSON.stringify({
+        //         foodStatus: 'pending',
+        //     }),
+        // })
+        //     .then((res) => res.json())
+        //     .then((data) => {
+        //         console.log(data);
+        //     });
     }
     return (
         <div className="container mx-auto">

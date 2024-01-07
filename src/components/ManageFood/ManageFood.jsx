@@ -3,6 +3,7 @@ import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import { useTable } from "react-table";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 // import * as React from "react";
 
 const ManageFood = () => {
@@ -44,13 +45,30 @@ const ManageFood = () => {
             accessor: "actions",
             Cell: ({ row }) => (
                 <div>
-                    <button onClick={() => handleManage(row.original)}>Manage</button>
+                    <Link to={`/editFood/${row.original._id}`}>
+                        <button>Edit</button>
+                    </Link>
+                    {/* <button onClick={() => handleEdit(row.original._id)}>Edit</button> */}
+                    <Link to={`/manage/${row.original._id}`}>
+                        <button>Manage</button>
+                    </Link>
+                    {/* <button onClick={() => handleManage(row.original)}>Manage</button> */}
                     <button onClick={() => handleDelete(row.original._id)}>Delete</button>
                 </div>
             ),
         },
-    ], [])
+    ], [addedFoods])
 
+    const handleEdit = (_id) => {
+        // Add your manage logic here
+        console.log("Edit food", _id);
+        // Use the `Link` component properly and close the button element
+        // return (
+        //     <Link to={`/editFood/${_id}`}>
+
+        //     </Link>
+        // );
+    };
     const handleManage = (food) => {
         // Add your manage logic here
         console.log("Managing food", food);
@@ -75,8 +93,11 @@ const ManageFood = () => {
     //             })
     //     }
     // };
-    const handleDelete = _id => {
-        console.log('clicked', _id);
+    const handleDelete = id => {
+        console.log(addedFoods);
+        console.log('clicked', id);
+        const remaining = addedFoods.filter(food => food._id !== id);
+        console.log('remainingActual', remaining);
         Swal.fire({
             title: "Are you sure?",
             text: "Once deleted cannot be undone!",
@@ -87,7 +108,7 @@ const ManageFood = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/foods/${_id}`, {
+                fetch(`http://localhost:5000/foods/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -99,13 +120,16 @@ const ManageFood = () => {
                                 text: "Your added car has been deleted.",
                                 icon: "success"
                             })
-                            const remaining = addedFoods.filter(food => food._id !== _id);
+                            const remaining = addedFoods.filter(food => food._id !== id);
+                            console.log('remainingActual', remaining);
                             setAddedFoods(remaining);
+                            console.log(addedFoods);
                         }
                     })
             }
         });
     }
+
 
     // const table = useTable({ columns, data })
     // console.log(table);
@@ -122,29 +146,29 @@ const ManageFood = () => {
             <h1>this is manage my food</h1>
             {/* trying to implement react tbale */}
             <div className="container mx-auto">
-            <table {...getTableProps()}>
-                <thead>
-                    {headerGroups.map(headerGroup => (
-                        <tr {...headerGroup.getHeaderGroupProps()}>
-                            {headerGroup.headers.map(column => (
-                                <th {...column.getHeaderProps()}>{column.render('Header')}</th>
-                            ))}
-                        </tr>
-                    ))}
-                </thead>
-                <tbody {...getTableBodyProps()}>
-                    {rows.map(row => {
-                        prepareRow(row);
-                        return (
-                            <tr {...row.getRowProps()}>
-                                {row.cells.map(cell => (
-                                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                <table {...getTableProps()}>
+                    <thead>
+                        {headerGroups.map(headerGroup => (
+                            <tr {...headerGroup.getHeaderGroupProps()}>
+                                {headerGroup.headers.map(column => (
+                                    <th {...column.getHeaderProps()}>{column.render('Header')}</th>
                                 ))}
                             </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+                        ))}
+                    </thead>
+                    <tbody {...getTableBodyProps()}>
+                        {rows.map(row => {
+                            prepareRow(row);
+                            return (
+                                <tr {...row.getRowProps()}>
+                                    {row.cells.map(cell => (
+                                        <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                    ))}
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
             </div>
 
         </div>
