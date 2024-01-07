@@ -44,7 +44,7 @@ const Navbar = () => {
     </>
 
     return (
-        <nav className="glass fixed top-0 left-0 right-0">
+        <nav className="glass fixed top-0 left-0 right-0 z-10">
             <div className="container mx-auto">
                 <div className="navbar">
                     <div className="navbar-start">
