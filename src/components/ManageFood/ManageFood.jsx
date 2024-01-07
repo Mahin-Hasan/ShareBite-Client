@@ -117,7 +117,7 @@ const ManageFood = () => {
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your added car has been deleted.",
+                                text: "Your added food has been deleted.",
                                 icon: "success"
                             })
                             const remaining = addedFoods.filter(food => food._id !== id);
