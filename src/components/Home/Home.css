@@ -4,3 +4,32 @@
 .custom-font{
     font-family: 'Lobster Two', sans-serif;
 }
+
+.chef-bg {
+    /* background-image: url(../images/tb-servise-bg.jpg);
+	background-attachment: fixed;
+	background-position: center; */
+	padding:160px 0 40px 0;
+    position: relative;
+}
+
+.chef-bg::before {
+   
+    content: "";
+    position: absolute;
+    top: -1px;
+    width: 100%;
+    height: 100px;
+    background-image: url('../../assets/chefafter.png');
+
+}
+
+.chef-bg::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 100px;
+    background-image: url('../../assets/chefbefore.png');
+
+}

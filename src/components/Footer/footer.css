@@ -1,0 +1,9 @@
+.footer-bg {
+    background-image: url("../../assets/footerbg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-position-y: 0%;
+    color: #c9c9c9;
+    padding: 20px;
+  }
