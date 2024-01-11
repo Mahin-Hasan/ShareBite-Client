@@ -27,7 +27,7 @@ const FeaturedFoods = ({ food }) => {
                     </div>
                 </div>
                 <Link to={`/food/${_id}`}>
-                    <button type="button" className="flex items-center justify-center w-full p-3 font-semibold rounded-md btn btn-warning">View Detail</button>
+                    <button type="button" className="w-full p-3 font-semibold rounded-md btn btn-warning">View Detail</button>
                 </Link>
             </div>
         </div>

@@ -1,9 +1,10 @@
 import { IoTimerOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 
 
 const AllFoods = ({ allFood }) => {
-    const { foodImage, foodName, expiredDateTime, userName, userPhoto, foodQuantity, pickupLocation, additionalNotes } = allFood;
+    const {_id, foodImage, foodName, expiredDateTime, userName, userPhoto, foodQuantity, pickupLocation, additionalNotes } = allFood;
     return (
         //    max-w-md
         <div className="p-8 sm:flex items-center justify-evenly sm:space-x-6 bg-stone-100 text-gray-800 rounded-lg">
@@ -19,7 +20,6 @@ const AllFoods = ({ allFood }) => {
                     <h1 className="text-2xl custom-font tracking-wide text-amber-600 mt-1">{foodName}</h1>
                 </div>
                 <div className="space-y-1">
-
                     <div className="text-stone-700">
                         <p className="font-sans">Servings: {foodQuantity} Persons</p>
                         <p className="font-sans">Pickup From: {pickupLocation}</p>
@@ -30,6 +30,9 @@ const AllFoods = ({ allFood }) => {
 
                         <p className="font-sans">Additional Info: <br /><span className="italic font-mono tracking-tight">{additionalNotes}</span></p>
                     </div>
+                    <Link to={`/food/${_id}`}>
+                        <button type="button" className="font-semibold rounded-md btn btn-sm btn-warning">View Detail</button>
+                    </Link>
                 </div>
             </div>
         </div>

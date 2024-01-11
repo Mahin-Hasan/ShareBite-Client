@@ -13,7 +13,7 @@ const FoodRequest = () => {
 
     // console.log(url);
     useEffect(() => {
-        axios.get(url)
+        axios.get(url,{ withCredentials: true })
             .then(res => {
                 setRequestedFood(res.data);
             })

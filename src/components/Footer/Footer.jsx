@@ -73,7 +73,7 @@ const Footer = () => {
                             </div>
                             <div>
                                 <h3 className="custom-font text-2xl">Email:</h3>
-                                <a href="mailto:mahinmtra@gmail.com">mahinmtra@gmail.com</a>
+                                <a href="mailto:mahinmtra@gmail.com">mahinmtrs@gmail.com</a>
 
                             </div>
                         </div>
