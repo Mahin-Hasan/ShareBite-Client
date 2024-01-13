@@ -1,4 +1,6 @@
-import { FaLocationDot } from "react-icons/fa6";
+import { FaLocationDot, FaFacebook, FaInstagram, FaGithub, FaTwitter } from "react-icons/fa6";
+import { FaLinkedin } from "react-icons/fa";
+
 import { FaPhone } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import logo from '../../assets/logo.png'
@@ -9,6 +11,7 @@ import ig4 from '../../assets/ig4.jpg'
 import ig5 from '../../assets/ig5.jpg'
 import ig6 from '../../assets/ig6.jpg'
 import './footer.css'
+import { Link } from "react-router-dom";
 
 const Footer = () => {
     return (
@@ -21,7 +24,20 @@ const Footer = () => {
                         </div>
                         {/* <span className="self-center text-2xl font-semibold">Brand name</span> */}
                     </a>
-                    <p className='mt-6 font-mono leading-snug text-center lg:text-start'>Share Bite: A flavorful rendezvous for foodies, where bites tell tales and joy is shared in every taste. Unite with us for a bite-sized adventure in the world of deliciousness.</p>
+                    <p className='my-6 font-mono leading-snug text-center lg:text-start'>Share Bite: A flavorful rendezvous for foodies, where bites tell tales and joy is shared in every taste. Unite with us for a bite-sized adventure in the world of deliciousness.</p>
+                    <div className="flex gap-3 text-4xl text-white justify-center lg:justify-start">
+                        <Link target="blank" to='https://www.facebook.com/mahin.hasan.750/'><FaFacebook />
+                        </Link>
+                        <Link target="blank" to='https://www.instagram.com/mahin_hsn/'><FaInstagram />
+                        </Link>
+                        <Link target="blank" to='https://twitter.com/Mahin_hsn'><FaTwitter />
+                        </Link>
+                        <Link target="blank" to='https://www.linkedin.com/in/mahin-hasan-/'><FaLinkedin />
+                        </Link>
+                        <Link target="blank" to='https://github.com/Mahin-Hasan'><FaGithub />
+                        </Link>
+
+                    </div>
                 </div>
                 <div className="grid grid-cols-1 text-sm gap-x-3 gap-y-8 lg:w-3/4 sm:grid-cols-3">
                     <div className="space-y-3 ms-0 sm:ms-4">

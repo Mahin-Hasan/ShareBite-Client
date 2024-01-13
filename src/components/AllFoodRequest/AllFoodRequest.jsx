@@ -14,10 +14,10 @@ const AllFoodRequest = ({ reqFood, handleDeleteRequest }) => {
                             <h3 className="text-lg font-semibold leadi sm:pr-8">{foodName}</h3>
                             <p className="text-sm dark:text-gray-400">Donar Name: {userName}</p>
                         </div>
-                        <div className="text-right">
+                        {/* <div className="text-right">
                             <p className="text-lg font-semibold">59.99€</p>
                             <p className="text-sm line-through dark:text-gray-600">75.50€</p>
-                        </div>
+                        </div> */}
                     </div>
                     <div className="flex text-sm divide-x">
                         <button

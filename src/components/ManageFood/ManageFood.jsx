@@ -6,13 +6,13 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { LiaEditSolid } from "react-icons/lia";
 import { IoMdSettings } from "react-icons/io";
-
 // import * as React from "react";
 
 const ManageFood = () => {
     const { user } = useContext(AuthContext);
     // a state to set change in data
     const [addedFoods, setAddedFoods] = useState([]);
+    const [loading, setLoading] = useState(false);
 
     const url = `http://localhost:5000/foods?userEmail=${user.email}`
 
@@ -21,6 +21,7 @@ const ManageFood = () => {
         axios.get(url)
             .then(res => {
                 setAddedFoods(res.data);
+                setLoading(true);
             })
     }, [url])
     console.log(addedFoods);
@@ -108,25 +109,6 @@ const ManageFood = () => {
         console.log("Managing food", food);
     };
 
-    // const handleDelete1 = (foodId) => {
-    //     // Add your delete logic here
-    //     console.log("Deleting food with ID", foodId);
-    //     const proceed = confirm('Are you sure you want to delete');
-    //     if (proceed) {
-    //         fetch(`http://localhost:5000/foods/${foodId}`, {
-    //             method: 'DELETE'
-    //         })
-    //             .then(res => res.json())
-    //             .then(data => {
-    //                 console.log(data);
-    //                 if (data.deletedCount > 0) {
-    //                     alert('Delete operation successful')
-    //                     const remaining = addedFoods.filter(food => food._id !== foodId);
-    //                     setAddedFoods(remaining)
-    //                 }
-    //             })
-    //     }
-    // };
     const handleDelete = id => {
         console.log(addedFoods);
         console.log('clicked', id);
@@ -181,7 +163,41 @@ const ManageFood = () => {
             <h1 className="mb-6 text-center text-yellow-700 custom-font text-5xl italic">My Added Foods</h1>
             <div className="px-2 sm:px-12 md:px-24 lg:px-44">
                 <div className="overflow-x-auto rounded-md">
-                    <table className="min-w-full text-xs" {...getTableProps()}>
+                    {
+                        loading ? (
+                            <table className="min-w-full text-xs" {...getTableProps()}>
+                                <thead className="rounded-t-lg bg-amber-300">
+                                    {headerGroups.map(headerGroup => (
+                                        <tr {...headerGroup.getHeaderGroupProps()}>
+                                            {headerGroup.headers.map(column => (
+                                                <th className="p-2 font-sans sm:text-base" {...column.getHeaderProps()}>
+                                                    {column.render('Header')}
+                                                </th>
+                                            ))}
+                                        </tr>
+                                    ))}
+                                </thead>
+                                <tbody {...getTableBodyProps()}>
+                                    {rows.map(row => {
+                                        prepareRow(row);
+                                        return (
+                                            <tr className="text-center border-b-2 border-opacity-70 border-amber-300 bg-amber-50" {...row.getRowProps()}>
+                                                {row.cells.map(cell => (
+                                                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                                ))}
+                                            </tr>
+                                        );
+                                    })}
+                                </tbody>
+                            </table>
+                        ) : (
+                            <div className="flex justify-center items-center h-24">
+                                <span className="loading loading-dots loading-lg text-blue-600"></span>
+                            </div>
+                        )
+                    }
+
+                    {/* <table className="min-w-full text-xs" {...getTableProps()}>
                         <thead className="rounded-t-lg bg-amber-300">
                             {headerGroups.map(headerGroup => (
                                 <tr {...headerGroup.getHeaderGroupProps()}>
@@ -203,7 +219,7 @@ const ManageFood = () => {
                                 );
                             })}
                         </tbody>
-                    </table>
+                    </table> */}
                 </div>
             </div>
 

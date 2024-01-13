@@ -1,14 +1,12 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import RequesterInfo from "../RequesterInfo/RequesterInfo";
 import Swal from "sweetalert2";
 
 const ManageSingleFood = () => {
-    const { user } = useContext(AuthContext);
-
     const [foodRequests, setFoodRequests] = useState([]);
+    const [loading, setLoading] = useState(false);
 
 
     const manage = useLoaderData();//food clicked 
@@ -16,9 +14,10 @@ const ManageSingleFood = () => {
     const url = `http://localhost:5000/requests?foodId=${_id}`
 
     useEffect(() => {
-        axios.get(url,{ withCredentials: true })
+        axios.get(url, { withCredentials: true })
             .then(res => {
                 setFoodRequests(res.data);
+                setLoading(true);
             })
     }, [url])
 
@@ -74,12 +73,24 @@ const ManageSingleFood = () => {
                         </thead>
                         <tbody>
                             {
+                                loading ? (
+                                    foodRequests.map(request => (<RequesterInfo
+                                        key={request._id}
+                                        request={request}
+                                        handleDeliver={handleDeliver}
+                                    ></RequesterInfo>))
+                                ) : (
+                                    <div className="flex justify-center items-center"><span className="loading loading-dots loading-lg text-amber-600"></span>
+                                    </div>
+                                )
+                            }
+                            {/* {
                                 foodRequests.map(request => <RequesterInfo
                                     key={request._id}
                                     request={request}
                                     handleDeliver={handleDeliver}
                                 ></RequesterInfo>)
-                            }
+                            } */}
 
                         </tbody>
 
