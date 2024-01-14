@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import { LiaEditSolid } from "react-icons/lia";
 import { IoMdSettings } from "react-icons/io";
-// import * as React from "react";
+import { motion } from 'framer-motion';
 
 const ManageFood = () => {
     const { user } = useContext(AuthContext);
@@ -15,10 +15,9 @@ const ManageFood = () => {
     const [loading, setLoading] = useState(false);
 
     const url = `http://localhost:5000/foods?userEmail=${user.email}`
-    useEffect(()=>{
-        document.title="Manage Food"
-    },[])
-    // console.log(url);
+    useEffect(() => {
+        document.title = "Manage Food"
+    }, [])
     useEffect(() => {
         axios.get(url)
             .then(res => {
@@ -35,7 +34,6 @@ const ManageFood = () => {
             accessor: "delete",
             Cell: ({ row }) => (
                 <div>
-                    {/* <button onClick={() => handleManage(row.original)}>Manage</button> */}
                     <button onClick={() => handleDelete(row.original._id)} className="btn btn-sm sm:btn-md btn-circle btn-outline hover:bg-red-600 border-2 hover:border-none font-bold text-red-600">
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                     </button>
@@ -51,10 +49,6 @@ const ManageFood = () => {
                 </div>
             ),
         },
-        // {
-        //     Header: "ID",
-        //     accessor: "_id",
-        // },
         {
             Header: "Food Name",
             accessor: "foodName",
@@ -64,10 +58,6 @@ const ManageFood = () => {
                 </div>
             ),
         },
-        // {
-        //     Header: "Food Image",
-        //     accessor: "foodImage",
-        // },
         {
             Header: "Expire Date",
             accessor: "expiredDateTime",
@@ -86,7 +76,6 @@ const ManageFood = () => {
                         <button className="btn btn-sm text-sm sm:text-lg btn-primary hover:bg-indigo-800 text-white  px-2"><LiaEditSolid />
                         </button>
                     </Link>
-                    {/* <button onClick={() => handleEdit(row.original._id)}>Edit</button> */}
                     <Link to={`/manage/${row.original._id}`}>
                         <button className="btn btn-sm text-sm sm:text-lg bg-teal-500 hover:bg-teal-800 text-white px-2"><IoMdSettings />
                         </button>
@@ -96,20 +85,6 @@ const ManageFood = () => {
         },
     ], [addedFoods])
 
-    const handleEdit = (_id) => {
-        // Add your manage logic here
-        console.log("Edit food", _id);
-        // Use the `Link` component properly and close the button element
-        // return (
-        //     <Link to={`/editFood/${_id}`}>
-
-        //     </Link>
-        // );
-    };
-    const handleManage = (food) => {
-        // Add your manage logic here
-        console.log("Managing food", food);
-    };
 
     const handleDelete = id => {
         console.log(addedFoods);
@@ -148,9 +123,6 @@ const ManageFood = () => {
         });
     }
 
-
-    // const table = useTable({ columns, data })
-    // console.log(table);
     const {
         getTableProps,
         getTableBodyProps,
@@ -160,72 +132,53 @@ const ManageFood = () => {
     } = useTable({ columns, data });
 
     return (
-        <div className="container mx-auto text-gray-800 py-10">
-            {/* trying to implement react tbale */}
-            <h1 className="mb-6 text-center text-yellow-700 custom-font text-5xl italic">My Added Foods</h1>
-            <div className="px-2 sm:px-12 md:px-24 lg:px-44">
-                <div className="overflow-x-auto rounded-md">
-                    {
-                        loading ? (
-                            <table className="min-w-full text-xs" {...getTableProps()}>
-                                <thead className="rounded-t-lg bg-amber-300">
-                                    {headerGroups.map(headerGroup => (
-                                        <tr {...headerGroup.getHeaderGroupProps()}>
-                                            {headerGroup.headers.map(column => (
-                                                <th className="p-2 font-sans sm:text-base" {...column.getHeaderProps()}>
-                                                    {column.render('Header')}
-                                                </th>
-                                            ))}
-                                        </tr>
-                                    ))}
-                                </thead>
-                                <tbody {...getTableBodyProps()}>
-                                    {rows.map(row => {
-                                        prepareRow(row);
-                                        return (
-                                            <tr className="text-center border-b-2 border-opacity-70 border-amber-300 bg-amber-50" {...row.getRowProps()}>
-                                                {row.cells.map(cell => (
-                                                    <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+        <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: "100%" }}
+            exit={{ x: window.innerWidth, transition: { duration: 0.5 } }}
+        >
+            <div className="container mx-auto text-gray-800 py-10">
+                {/* trying to implement react tbale */}
+                <h1 className="mb-6 text-center text-yellow-700 custom-font text-5xl italic">My Added Foods</h1>
+                <div className="px-2 sm:px-12 md:px-24 lg:px-44">
+                    <div className="overflow-x-auto rounded-md">
+                        {
+                            loading ? (
+                                <table className="min-w-full text-xs" {...getTableProps()}>
+                                    <thead className="rounded-t-lg bg-amber-300">
+                                        {headerGroups.map(headerGroup => (
+                                            <tr {...headerGroup.getHeaderGroupProps()}>
+                                                {headerGroup.headers.map(column => (
+                                                    <th className="p-2 font-sans sm:text-base" {...column.getHeaderProps()}>
+                                                        {column.render('Header')}
+                                                    </th>
                                                 ))}
                                             </tr>
-                                        );
-                                    })}
-                                </tbody>
-                            </table>
-                        ) : (
-                            <div className="flex justify-center items-center h-24">
-                                <span className="loading loading-dots loading-lg text-blue-600"></span>
-                            </div>
-                        )
-                    }
-
-                    {/* <table className="min-w-full text-xs" {...getTableProps()}>
-                        <thead className="rounded-t-lg bg-amber-300">
-                            {headerGroups.map(headerGroup => (
-                                <tr {...headerGroup.getHeaderGroupProps()}>
-                                    {headerGroup.headers.map(column => (
-                                        <th className="p-2 font-sans sm:text-base" {...column.getHeaderProps()}>{column.render('Header')}</th>
-                                    ))}
-                                </tr>
-                            ))}
-                        </thead>
-                        <tbody {...getTableBodyProps()}>
-                            {rows.map(row => {
-                                prepareRow(row);
-                                return (
-                                    <tr className="text-center border-b-2 border-opacity-70 border-amber-300 bg-amber-50" {...row.getRowProps()}>
-                                        {row.cells.map(cell => (
-                                            <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
                                         ))}
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table> */}
+                                    </thead>
+                                    <tbody {...getTableBodyProps()}>
+                                        {rows.map(row => {
+                                            prepareRow(row);
+                                            return (
+                                                <tr className="text-center border-b-2 border-opacity-70 border-amber-300 bg-amber-50" {...row.getRowProps()}>
+                                                    {row.cells.map(cell => (
+                                                        <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
+                                                    ))}
+                                                </tr>
+                                            );
+                                        })}
+                                    </tbody>
+                                </table>
+                            ) : (
+                                <div className="flex justify-center items-center h-24">
+                                    <span className="loading loading-dots loading-lg text-blue-600"></span>
+                                </div>
+                            )
+                        }
+                    </div>
                 </div>
             </div>
-
-        </div>
+        </motion.div>
     );
 };
 

@@ -5,7 +5,12 @@ import AllFoodRequest from "../AllFoodRequest/AllFoodRequest";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import gif from '../../assets/loader.gif'
+import { motion } from 'framer-motion';
+
 const FoodRequest = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     const { user } = useContext(AuthContext);
     // a state to set change in data
     const [requestedFood, setRequestedFood] = useState([]);
@@ -15,7 +20,6 @@ const FoodRequest = () => {
     }, [])
     const url = `http://localhost:5000/requests?loggedUserEmail=${user.email}`
 
-    // console.log(url);
     useEffect(() => {
         axios.get(url, { withCredentials: true })
             .then(res => {
@@ -23,7 +27,6 @@ const FoodRequest = () => {
                 setLoading(true);
             })
     }, [url])
-    // console.log(requestedFood);
     const handleDeleteRequest = id => {
         console.log('Delete button clicked for ID:', id);
         Swal.fire({
@@ -63,7 +66,12 @@ const FoodRequest = () => {
         });
     };
     return (
-        <div>
+        <motion.div
+        initial={{ width: 0 }}
+        animate={{ width: "100%" }}
+        exit={{ x: window.innerWidth, transition: { duration: 0.5 } }}
+        >
+            <div>
             <div className="flex justify-center">
                 <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100">
                     <h2 className="text-xl font-semibold">{requestedFood.length === 0 && (
@@ -93,11 +101,6 @@ const FoodRequest = () => {
                                 )
                         }
                     </ul>
-                    {/* <div className="space-y-1 text-right">
-                        <p>Total Requested Food:
-                            <span className="font-semibold"> {requestedFood.length}</span>
-                        </p>
-                    </div> */}
                     <div className="flex justify-end space-x-4">
                         <Link to='/'>
                             <button className="px-6 py-2 border rounded-md dark:border-violet-400">
@@ -113,6 +116,7 @@ const FoodRequest = () => {
                 </div>
             </div>
         </div>
+        </motion.div>
     );
 };
 
