@@ -12,7 +12,9 @@ const ManageSingleFood = () => {
     const manage = useLoaderData();//food clicked 
     const { _id, foodName, foodImage } = manage;
     const url = `http://localhost:5000/requests?foodId=${_id}`
-
+    useEffect(()=>{
+        document.title=`Manage ${foodName}`
+    },[])
     useEffect(() => {
         axios.get(url, { withCredentials: true })
             .then(res => {

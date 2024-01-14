@@ -1,12 +1,16 @@
 import { useLoaderData } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import editFoodbg from "../../assets/editFood.jpg"
 const EditFood = () => {
     const foods = useLoaderData();
+    
     const { _id, foodName, foodImage, foodQuantity, pickupLocation, expiredDateTime, additionalNotes } = foods;
+    useEffect(()=>{
+        document.title=`Edit ${foodName}`
+    },[])
     const { user } = useContext(AuthContext);
     // console.log(_id);
 

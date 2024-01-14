@@ -15,7 +15,9 @@ const ManageFood = () => {
     const [loading, setLoading] = useState(false);
 
     const url = `http://localhost:5000/foods?userEmail=${user.email}`
-
+    useEffect(()=>{
+        document.title="Manage Food"
+    },[])
     // console.log(url);
     useEffect(() => {
         axios.get(url)

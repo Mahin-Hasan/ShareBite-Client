@@ -10,7 +10,9 @@ const FoodRequest = () => {
     // a state to set change in data
     const [requestedFood, setRequestedFood] = useState([]);
     const [loading, setLoading] = useState(false);
-
+    useEffect(() => {
+        document.title = "Food Request"
+    }, [])
     const url = `http://localhost:5000/requests?loggedUserEmail=${user.email}`
 
     // console.log(url);
@@ -62,12 +64,16 @@ const FoodRequest = () => {
     };
     return (
         <div>
-            <h1>All Food Requests!</h1>
             <div className="flex justify-center">
                 <div className="flex flex-col max-w-3xl p-6 space-y-4 sm:p-10 dark:bg-gray-900 dark:text-gray-100">
                     <h2 className="text-xl font-semibold">{requestedFood.length === 0 && (
                         <p>No Requested food</p>
                     )}</h2>
+                    <div className="space-y-1 text-right">
+                        <p>Total Requested Food:
+                            <span className="font-semibold custom-font text-2xl text-amber-400"> {requestedFood.length}</span>
+                        </p>
+                    </div>
                     <ul className="flex flex-col divide-y dark:divide-gray-700">
                         {
                             loading ? (
@@ -78,36 +84,31 @@ const FoodRequest = () => {
                                         handleDeleteRequest={handleDeleteRequest}
                                     ></AllFoodRequest>
                                 ))
-                            ) 
-                            : 
-                            (
-                                <div>
-                                    <img className="w-80" src={gif} />
-                                </div>
                             )
+                                :
+                                (
+                                    <div>
+                                        <img className="w-80" src={gif} />
+                                    </div>
+                                )
                         }
-                        {/* {
-                            requestedFood.map(reqFood => <AllFoodRequest
-                                key={reqFood._id}
-                                reqFood={reqFood}
-                                handleDeleteRequest={handleDeleteRequest}
-                            ></AllFoodRequest>)
-                        } */}
                     </ul>
-                    <div className="space-y-1 text-right">
+                    {/* <div className="space-y-1 text-right">
                         <p>Total Requested Food:
                             <span className="font-semibold"> {requestedFood.length}</span>
                         </p>
-                    </div>
+                    </div> */}
                     <div className="flex justify-end space-x-4">
                         <Link to='/'>
                             <button className="px-6 py-2 border rounded-md dark:border-violet-400">
                                 <span className="sr-only sm:not-sr-only">Back to </span>Home
                             </button>
                         </Link>
-                        <button className="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-gray-900 dark:border-violet-400">
-                            <span className="sr-only sm:not-sr-only">Continue to </span>Request
-                        </button>
+                        <Link to='/availableFoods'>
+                            <button className="px-6 py-2 border rounded-md dark:bg-violet-400 dark:text-gray-900 dark:border-violet-400">
+                                <span className="sr-only sm:not-sr-only">Continue to </span>Request
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

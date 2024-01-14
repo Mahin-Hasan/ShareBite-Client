@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import loginbg from '../../assets/login1.png'
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
@@ -10,7 +10,9 @@ const Login = () => {
     const { googleLogin, signIn } = useContext(AuthContext);
     const location = useLocation();
     const navigate = useNavigate();
-
+    useEffect(()=>{
+        document.title="Login"
+    },[])
 
     //log in with email pass
     const handleSignin = e => {

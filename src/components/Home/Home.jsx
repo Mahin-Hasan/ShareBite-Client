@@ -33,6 +33,9 @@ const Home = () => {
     useEffect(() => {
         sortFoodByHighestQuantity();
     }, []);
+    useEffect(()=>{
+        document.title="ShareBite | Home"
+    },[])
 
     return (
         <main>

@@ -1,5 +1,5 @@
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import registerbg from '../../assets/register.png'
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
@@ -11,7 +11,9 @@ const Register = () => {
     const navigate = useNavigate();
     const { createUser } = useContext(AuthContext);
     const location = useLocation();
-
+    useEffect(()=>{
+        document.title="Register"
+    },[])
     //log in with email pass
     const handleSignup = e => {
         e.preventDefault();

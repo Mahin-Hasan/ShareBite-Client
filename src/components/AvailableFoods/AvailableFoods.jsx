@@ -16,6 +16,9 @@ const AvailableFoods = () => {
                 setLoading(true);
             })
     }, [])
+    useEffect(()=>{
+        document.title="Available Foods"
+    },[])
 
     // Implement search functionality by food name
     const handleSearchedFoodName = searchedFood => {

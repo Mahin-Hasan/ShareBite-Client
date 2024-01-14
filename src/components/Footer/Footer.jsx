@@ -26,15 +26,15 @@ const Footer = () => {
                     </a>
                     <p className='my-6 font-mono leading-snug text-center lg:text-start'>Share Bite: A flavorful rendezvous for foodies, where bites tell tales and joy is shared in every taste. Unite with us for a bite-sized adventure in the world of deliciousness.</p>
                     <div className="flex gap-3 text-4xl text-white justify-center lg:justify-start">
-                        <Link target="blank" to='https://www.facebook.com/mahin.hasan.750/'><FaFacebook />
+                        <Link target="blank" to='https://www.facebook.com/mahin.hasan.750/'><FaFacebook className="hover:text-amber-400 transition duration-500"/>
                         </Link>
-                        <Link target="blank" to='https://www.instagram.com/mahin_hsn/'><FaInstagram />
+                        <Link target="blank" to='https://www.instagram.com/mahin_hsn/'><FaInstagram className='hover:text-amber-400 transition duration-500'/>
                         </Link>
-                        <Link target="blank" to='https://twitter.com/Mahin_hsn'><FaTwitter />
+                        <Link target="blank" to='https://twitter.com/Mahin_hsn'><FaTwitter className='hover:text-amber-400 transition duration-500'/>
                         </Link>
-                        <Link target="blank" to='https://www.linkedin.com/in/mahin-hasan-/'><FaLinkedin />
+                        <Link target="blank" to='https://www.linkedin.com/in/mahin-hasan-/'><FaLinkedin className='hover:text-amber-400 transition duration-500'/>
                         </Link>
-                        <Link target="blank" to='https://github.com/Mahin-Hasan'><FaGithub />
+                        <Link target="blank" to='https://github.com/Mahin-Hasan'><FaGithub className='hover:text-amber-400 transition duration-500'/>
                         </Link>
 
                     </div>

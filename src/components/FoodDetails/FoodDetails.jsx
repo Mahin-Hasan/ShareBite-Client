@@ -1,25 +1,15 @@
 import { useLoaderData } from "react-router-dom";
 import { MdCancel } from "react-icons/md";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 const FoodDetails = () => {
     const { user } = useContext(AuthContext);
-
-    // _id
-    // foodName
-    // foodImage
-    // foodQuantity
-    // pickupLocation
-    // expiredDateTime
-    // additionalNotes
-    // userName = donar name from previous stored
-    // userEmail =
-    // userPhoto
-    // foodStatus
-
+    useEffect(()=>{
+        document.title="Food Details"
+    },[])
 
 
 
@@ -32,7 +22,7 @@ const FoodDetails = () => {
     const loggedUserPhoto = user?.photoURL;
     const requesterName = user?.displayName;
     const foodRequestStatus = 'pending';
-    console.log(foodRequestStatus);
+    // console.log(foodRequestStatus);
     //additional notes
     //donation money
 
@@ -57,43 +47,13 @@ const FoodDetails = () => {
                 }
             })
 
-
-        //change food request status on request
-        // fetch(`http://localhost:5000/foods/${_id}`, {
-        //     method: 'PATCH',
-        //     headers: {
-        //         'content-type': 'application/json'
-        //     },
-        //     body: JSON.stringify({ 
-        //         foodStatus: 'pending' })
-        // })
-        //     .then(res => res.json())
-        //     .then(data => {
-        //         console.log(data);
-        //     }
-
-
-        //commenting previously added to wrong database
-        // fetch(`http://localhost:5000/foods/${_id}`, {
-        //     method: 'PATCH',
-        //     headers: {
-        //         'content-type': 'application/json',
-        //     },
-        //     body: JSON.stringify({
-        //         foodStatus: 'pending',
-        //     }),
-        // })
-        //     .then((res) => res.json())
-        //     .then((data) => {
-        //         console.log(data);
-        //     });
     }
     return (
         <div className="container mx-auto">
-            <div className="p-5 mx-auto sm:p-10 md:p-16 bg-cyan-100 text-gray-800">
+            <div className="p-5 mx-auto sm:p-10 md:p-16 bg-teal-100 text-gray-800">
                 <div className="flex flex-col max-w-3xl mx-auto overflow-hidden rounded">
                     <img src={foodImage} className="w-full h-64 sm:h-[460px] bg-gray-500" />
-                    <div className="p-6 pb-12 m-4 mx-4 -mt-16 space-y-2 lg:max-w-2xl sm:px-10 sm:mx-12 lg:rounded-md bg-lime-50">
+                    <div className="p-6 pb-12 m-4 mx-4 -mt-16 space-y-2 lg:max-w-2xl sm:px-10 sm:mx-12 lg:rounded-md bg-green-50">
                         <div className="space-y-2">
                             <h1 className="text-2xl font-semibold sm:text-3xl text-center custom-font tracking-wide text-amber-600">Food Name: {foodName}</h1>
                             <p className="font-mono tracking-tight">Food QuantiQuantity: {foodQuantity}</p>

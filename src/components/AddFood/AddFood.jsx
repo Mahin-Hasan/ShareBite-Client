@@ -1,11 +1,13 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 import addfoodbg from "../../assets/addfood.jpg"
 const AddFood = () => {
     const { user } = useContext(AuthContext);
-
+    useEffect(()=>{
+        document.title="Add Food"
+    },[])
     const handleAddFood = e => {
         e.preventDefault();
 
