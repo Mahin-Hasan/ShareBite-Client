@@ -140,6 +140,11 @@ const ManageFood = () => {
             <div className="container mx-auto text-gray-800 py-10">
                 {/* trying to implement react tbale */}
                 <h1 className="mb-6 text-center text-yellow-700 custom-font text-5xl italic">My Added Foods</h1>
+                <div className="relative">
+                    <h2 className="text-xl absolute left-1/2 transform -translate-x-1/2 top-16 font-semibold">{addedFoods.length === 0 && (
+                        <p>No Added Food</p>
+                    )}</h2>
+                </div>
                 <div className="px-2 sm:px-12 md:px-24 lg:px-44">
                     <div className="overflow-x-auto rounded-md">
                         {
@@ -156,6 +161,7 @@ const ManageFood = () => {
                                             </tr>
                                         ))}
                                     </thead>
+
                                     <tbody {...getTableBodyProps()}>
                                         {rows.map(row => {
                                             prepareRow(row);

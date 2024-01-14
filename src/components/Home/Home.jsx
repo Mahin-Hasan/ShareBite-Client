@@ -73,8 +73,8 @@ const Home = () => {
                         <div id="slide2" className="carousel-item relative w-full">
                             <img src={slider2} className="w-full rounded-md" />
                             <div className="absolute rounded-md  flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
-                                <div className='text-white space-y-7 pl-12 w-1/2'>
-                                    <h2 className='text-9xl font-semibold custom-font italic'>Fast Food</h2>
+                            <div className='text-white space-y-7 pl-12 w-full md:w-1/2'>
+                                    <h2 className='text-7xl sm:text-9xl font-semibold custom-font italic'>Fast Food</h2>
                                     <p className="tracking-wide leading-7 line-clamp-6">Experience the best of both worlds with our fresh fast food—quick, convenient, and bursting with flavor. From crisp salads to perfectly grilled burgers, savor the goodness of made-to-order delights that elevate fast food to a new level of freshness.</p>
                                     <div>
                                         <Link to='availableFoods'>
@@ -91,9 +91,9 @@ const Home = () => {
                         <div id="slide3" className="carousel-item relative w-full">
                             <img src={slider3} className="w-full rounded-md" />
                             <div className="absolute rounded-md  flex items-center h-full left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
-                                <div className='text-white space-y-7 pl-12 w-1/2'>
-                                    <h2 className='text-9xl font-semibold custom-font italic'>Deshi Delights</h2>
-                                    <p className="tracking-wide leading-7">Savor the essence of Bangladesh with Deshi Eats. Indulge in flavorful biryanis, aromatic curries, and sweet delights that capture the heart of Deshi cuisine. Our menu is a curated celebration of tradition and authenticity, bringing the rich tapestry of Bangladeshi flavors to your table. Enjoy the warmth and diversity of Deshi food in every delicious bite.</p>
+                            <div className='text-white space-y-7 pl-12 w-full md:w-1/2'>
+                                    <h2 className='text-7xl sm:text-9xl font-semibold custom-font italic'>Deshi Delights</h2>
+                                    <p className="tracking-wide leading-7 line-clamp-6">Savor the essence of Bangladesh with Deshi Eats. Indulge in flavorful biryanis, aromatic curries, and sweet delights that capture the heart of Deshi cuisine. Our menu is a curated celebration of tradition and authenticity, bringing the rich tapestry of Bangladeshi flavors to your table. Enjoy the warmth and diversity of Deshi food in every delicious bite.</p>
                                     <div>
                                         <Link to='availableFoods'>
                                             <button className='btn btn-warning rounded-sm px-6 text-xl'>Request Now</button>
