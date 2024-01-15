@@ -22,9 +22,6 @@ const FoodDetails = () => {
     const loggedUserPhoto = user?.photoURL;
     const requesterName = user?.displayName;
     const foodRequestStatus = 'pending';
-    // console.log(foodRequestStatus);
-    //additional notes
-    //donation money
 
 
     const handleRequestFood = e => {
@@ -35,8 +32,7 @@ const FoodDetails = () => {
         console.log(additionalInfo, donationAmount);
 
         const requestedFood = { foodName, foodImage, foodId, userEmail, userName, requestedDate, pickupLocation, expiredDateTime, additionalInfo, loggedUserEmail, loggedUserPhoto, requesterName, donationAmount, foodRequestStatus }
-        console.log(requestedFood);
-        axios.post('http://localhost:5000/requests', requestedFood)
+        axios.post('https://sharebite-server.onrender.com/requests', requestedFood)
             .then(data => {
                 console.log(data.data);
                 if (data.data.insertedId) {
@@ -46,7 +42,6 @@ const FoodDetails = () => {
                     });
                 }
             })
-
     }
     return (
         <div className="container mx-auto">
@@ -112,22 +107,9 @@ const FoodDetails = () => {
                                                 <MdCancel className="ms-1 text-2xl font-extrabold" />
                                             </span>
                                         </form>
-
-
                                     </div>
                                 </div>
                             </div>
-
-                            {/* <div className="modal-box">
-                    <h3 className="font-bold text-lg">Hello!</h3>
-                    <p className="py-4">Press ESC key or click the button below to close</p>
-                    <div className="modal-action">
-                        <form method="dialog">
-                            {/* if there is a button in form, it will close the modal /}
-                            <button className="btn btn-sm">Close</button>
-                        </form>
-                    </div>
-                </div> */}
                         </dialog>
                     </div>
                 </div>

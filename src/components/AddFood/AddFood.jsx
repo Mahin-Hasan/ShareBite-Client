@@ -26,11 +26,9 @@ const AddFood = () => {
         const userName = user.displayName;
         const userEmail = user.email;
         const userPhoto = user.photoURL;
-        // console.log(foodName, foodImage, foodQuantity, pickupLocation, expiredDateTime, additionalNotes,user.photoURL,user.displayName,user.email,foodStatus);
         const newFood = { foodName, foodImage, foodQuantity, pickupLocation, expiredDateTime, additionalNotes, userName, userEmail, userPhoto, foodStatus }
-        // console.log(newFood);
 
-        axios.post('http://localhost:5000/foods', newFood)
+        axios.post('https://sharebite-server.onrender.com/foods', newFood)
             .then(data => {
                 console.log(data.data);
                 if (data.data.insertedId) {
@@ -97,9 +95,6 @@ const AddFood = () => {
                                     Expired Date/Time
                                 </label>
                                 <input type="date" id="expiredDateTime" name="expiredDateTime" className="input input-bordered bg-[#fefff7] w-full rounded-md py-2" required />
-                                {/* <input type="number" id="expiredDateTime" name="expiredDateTime"
-                            className="input input-bordered bg-[#fefff7] w-full rounded-md py-2"
-                            required /> */}
                             </div>
                             <div>
                                 <label className="label py-1 text-yellow-600 text-lg font-medium">
@@ -109,21 +104,6 @@ const AddFood = () => {
                                     className="px-2 border-2 bg-[#fefff7] w-full rounded-md py-2"
                                     rows="3"></textarea>
                             </div>
-
-
-
-                            {/* <div>
-                        <label htmlFor="foodStatus" className="block text-sm font-medium text-gray-600">
-                            Food Status
-                        </label>
-                        <select id="foodStatus" name="foodStatus" className="form-select" required>
-                            <option value="">Select Status</option>
-                            <option value="fresh">Fresh</option>
-                            <option value="cooked">Cooked</option>
-                            <option value="canned">Canned</option>
-                        </select>
-                    </div> */}
-
                             <button type="submit" className=" btn btn-warning text-white py-2 px-4 rounded-md w-full">
                                 Add Food
                             </button>

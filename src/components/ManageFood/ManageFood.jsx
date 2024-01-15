@@ -14,7 +14,7 @@ const ManageFood = () => {
     const [addedFoods, setAddedFoods] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    const url = `http://localhost:5000/foods?userEmail=${user.email}`
+    const url = `https://sharebite-server.onrender.com/foods?userEmail=${user.email}`
     useEffect(() => {
         document.title = "Manage Food"
     }, [])
@@ -25,7 +25,6 @@ const ManageFood = () => {
                 setLoading(true);
             })
     }, [url])
-    console.log(addedFoods);
 
     const data = React.useMemo(() => addedFoods, [addedFoods]);
     const columns = React.useMemo(() => [
@@ -101,7 +100,7 @@ const ManageFood = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/foods/${id}`, {
+                fetch(`https://sharebite-server.onrender.com/foods/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

@@ -12,7 +12,7 @@ const AvailableFoods = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:5000/foods')
+        axios.get('https://sharebite-server.onrender.com/foods')
             .then(res => {
                 setAllFoods(res.data);
                 setLoading(true);
@@ -94,7 +94,6 @@ const AvailableFoods = () => {
                             <img className="w-80" src={gif} />
                         </div>
                 }
-
             </div >
         </motion.div>
     );

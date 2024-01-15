@@ -22,7 +22,7 @@ const router = createBrowserRouter([
             {
                 path: "/",
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/foods')
+                loader: () => fetch('https://sharebite-server.onrender.com/foods')
             },
             {
                 path: "/login",
@@ -35,12 +35,12 @@ const router = createBrowserRouter([
             {
                 path: "/availableFoods",
                 element: <AvailableFoods></AvailableFoods>,
-                loader: () => fetch('http://localhost:5000/foods')
+                loader: () => fetch('https://sharebite-server.onrender.com/foods')
             },
             {
                 path: "/food/:id",
                 element: <PrivateRoute><FoodDetails></FoodDetails></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/foods/${params.id}`)
+                loader: ({ params }) => fetch(`https://sharebite-server.onrender.com/foods/${params.id}`)
             },
             {
                 path: "/addFood",
@@ -49,7 +49,7 @@ const router = createBrowserRouter([
             {
                 path: "/editFood/:id",
                 element: <PrivateRoute><EditFood></EditFood></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/foods/${params.id}`)
+                loader: ({ params }) => fetch(`https://sharebite-server.onrender.com/foods/${params.id}`)
             },
             {
                 path: "/manageFood",
@@ -58,7 +58,7 @@ const router = createBrowserRouter([
             {
                 path: "/manage/:id",
                 element: <PrivateRoute><ManageSingleFood></ManageSingleFood></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/foods/${params.id}`)
+                loader: ({ params }) => fetch(`https://sharebite-server.onrender.com/foods/${params.id}`)
             },
             {
                 path: "/foodRequest",

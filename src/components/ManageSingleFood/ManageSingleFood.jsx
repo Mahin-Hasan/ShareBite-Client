@@ -11,10 +11,10 @@ const ManageSingleFood = () => {
 
     const manage = useLoaderData();//food clicked 
     const { _id, foodName, foodImage } = manage;
-    const url = `http://localhost:5000/requests?foodId=${_id}`
-    useEffect(()=>{
-        document.title=`Manage ${foodName}`
-    },[])
+    const url = `https://sharebite-server.onrender.com/requests?foodId=${_id}`
+    useEffect(() => {
+        document.title = `Manage ${foodName}`
+    }, [])
     useEffect(() => {
         axios.get(url, { withCredentials: true })
             .then(res => {
@@ -26,9 +26,7 @@ const ManageSingleFood = () => {
 
     const handleDeliver = (foodId, reqId) => {
         console.log('food id', foodId);
-        // console.log('req id', reqId);
-
-        fetch(`http://localhost:5000/requests/${reqId}`, {
+        fetch(`https://sharebite-server.onrender.com/requests/${reqId}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -86,13 +84,6 @@ const ManageSingleFood = () => {
                                     </div>
                                 )
                             }
-                            {/* {
-                                foodRequests.map(request => <RequesterInfo
-                                    key={request._id}
-                                    request={request}
-                                    handleDeliver={handleDeliver}
-                                ></RequesterInfo>)
-                            } */}
 
                         </tbody>
 

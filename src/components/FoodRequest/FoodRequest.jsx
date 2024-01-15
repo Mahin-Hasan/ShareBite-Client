@@ -18,7 +18,7 @@ const FoodRequest = () => {
     useEffect(() => {
         document.title = "Food Request"
     }, [])
-    const url = `http://localhost:5000/requests?loggedUserEmail=${user.email}`
+    const url = `https://sharebite-server.onrender.com/requests?loggedUserEmail=${user.email}`
 
     useEffect(() => {
         axios.get(url, { withCredentials: true })
@@ -41,7 +41,7 @@ const FoodRequest = () => {
             console.log('Result of confirmation dialog:', result);
 
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/requests/${id}`, {
+                fetch(`https://sharebite-server.onrender.com/requests/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

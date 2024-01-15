@@ -56,16 +56,13 @@ const Register = () => {
 
     return (
         <section className="bg-orange-50 min-h-screen flex items-center justify-center">
-            {/* login container */}
             <div className="bg-gray-100 flex rounded-2xl shadow-lg max-w-3xl p-5 items-center">
-                {/* image */}
                 <div className="md:block hidden w-1/2">
                     <img
                         className="rounded-2xl"
                         src={registerbg}
                     />
                 </div>
-                {/* form */}
                 <div className="md:w-1/2 px-8 md:px-16">
                     <h2 className="font-bold text-2xl text-teal-700">Register</h2>
                     <p className="text-xs mt-4 text-teal-500">

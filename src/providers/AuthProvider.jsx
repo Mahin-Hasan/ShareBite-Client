@@ -46,13 +46,13 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
             //trying JWT tokan
             if (currentUser) {
-                axios.post('http://localhost:5000/token', loggedUser, { withCredentials: true })
+                axios.post('https://sharebite-server.onrender.com/token', loggedUser, { withCredentials: true })
                     .then(res => {
                         console.log('token response ', res.data);
                     })
             }
             else {
-                axios.post('http://localhost:5000/logout', loggedUser, {
+                axios.post('https://sharebite-server.onrender.com/logout', loggedUser, {
                     withCredentials: true
                 })
                     .then(res => {

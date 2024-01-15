@@ -12,7 +12,6 @@ const EditFood = () => {
         document.title=`Edit ${foodName}`
     },[])
     const { user } = useContext(AuthContext);
-    // console.log(_id);
 
     const handleEditFood = e => {
         e.preventDefault();
@@ -27,10 +26,9 @@ const EditFood = () => {
         const userName = user.displayName;
         const userEmail = user.email;
         const userPhoto = user.photoURL;
-        // console.log(foodName, foodImage, foodQuantity, pickupLocation, expiredDateTime, additionalNotes,user.photoURL,user.displayName,user.email,foodStatus);
         const updatedFood = { foodName, foodImage, foodQuantity, pickupLocation, expiredDateTime, additionalNotes, userName, userEmail, userPhoto, foodStatus }
         console.log(updatedFood);
-        axios.put(`http://localhost:5000/foods/${_id}`, updatedFood)
+        axios.put(`https://sharebite-server.onrender.com/foods/${_id}`, updatedFood)
             .then(data => {
                 console.log(data.data);
                 if (data.data.modifiedCount) {
@@ -42,13 +40,12 @@ const EditFood = () => {
                     })
                 }
             })
-
     }
     return (
         <div style={{ backgroundImage: `url(${editFoodbg})` }} className="bg-cover bg-center my-16">
             <div className="py-32">
                 <div className="max-w-3xl mx-auto bg-white p-8 rounded-md shadow-inner">
-                    <h2 className="font-bold mb-6 text-center text-yellow-700 custom-font text-4xl italic">Update Food Details</h2>
+                    <h2 className="font-bold mb-6 text-center text-yellow-700 custom-font text-4xl italic">Edit Food Details</h2>
                     <form onSubmit={handleEditFood} className="space-y-4">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
                             <div>
@@ -114,7 +111,7 @@ const EditFood = () => {
                             ></textarea>
                         </div>
                         <button type="submit" className=" btn btn-warning text-white py-2 px-4 rounded-md w-full">
-                            Update Food
+                            Edit Food
                         </button>
                     </form>
                 </div>

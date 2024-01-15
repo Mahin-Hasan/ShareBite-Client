@@ -1,8 +1,8 @@
 # Site Name: ShareBite 
 ## Student ID: WEB6-1237
 ### Live site link
-Click to view server side link: [ShareBite-Server](addLink).
-Click to view client side link: [ShareBite-Client](addLink).
+Click to view server side link: [ShareBite-Server](https://sharebite-server.onrender.com).
+Click to view client side link: [ShareBite-Client](https://sharebite-66978.web.app).
 
 #### 7 features and functionality of my project is described below:
 

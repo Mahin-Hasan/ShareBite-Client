@@ -28,7 +28,7 @@ const AllFoods = ({ allFood }) => {
                             <IoTimerOutline className="text-amber-600 font-bold" />
                         </div>
 
-                        <p className="font-sans">Additional Info: <br /><span className="italic font-mono tracking-tight">{additionalNotes}</span></p>
+                        <p className="font-sans">Additional Info: <br /><span className="italic font-mono tracking-tighter">{additionalNotes}</span></p>
                     </div>
                     <Link to={`/food/${_id}`}>
                         <button type="button" className="font-semibold rounded-md btn btn-sm btn-warning">View Detail</button>

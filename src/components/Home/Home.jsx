@@ -17,10 +17,8 @@ import './Home.css';
 const Home = () => {
     const foods = useLoaderData();
     const [highestQuantity, setHighestQuantity] = useState(foods);
-    // console.log(highestQuantity);
 
     // Function to compare Food Quantity
-
     const sortByHighestQuantity = (a, b) => {
         return b.foodQuantity - a.foodQuantity;
     };
@@ -189,10 +187,6 @@ const Home = () => {
                 </section>
                 <section className="container mx-auto mt-16 px-1">
                     <div className="flex flex-col lg:flex-row justify-between">
-                        {/* <div className="max-w-md overflow-hidden bg-gray-200 rounded-md shadow-md">
-                        <img className=" h-auto transform transition-transform duration-300 hover:scale-110" src={special1} alt="" />
-                        <img className=" h-auto transform transition-transform duration-300 hover:scale-110" src={special2} alt="" />
-                    </div> */}
                         <div className="w-full lg:w-1/2">
                             <div className="flex justify-center flex-col sm:flex-row gap-4">
                                 <div className="max-w-full sm:max-w-md overflow-hidden bg-gray-200 rounded-md shadow-md">
@@ -209,7 +203,6 @@ const Home = () => {
                                     <h4 className="text-2xl sm:text-4xl inline relative top-8 sm:top-14">Weekend’s</h4>
                                     <h1 className=" italic text-8xl sm:text-[170px]  text-[#efa41e] ">Special</h1>
                                     <h5 className="text-2xl sm:text-4xl inline relative -right-16 bottom-4">Dinner For You............</h5>
-                                    {/* <h5 className="text-4xl absolute -bottom-7 right-40">Dinner For You............</h5> */}
                                 </div>
                                 <div className="text-justify tracking-wide text-stone-600  px-4">
                                     <p>A culinary masterpiece crafted for your delight. Indulge in exquisite flavors, creating unforgettable moments around the table. Elevate your weekends with our carefully curated menu, promising a feast for the senses and the perfect blend of warmth and joy.</p>
@@ -217,18 +210,7 @@ const Home = () => {
                                 </div>
                             </div>
                         </div>
-
                     </div>
-                    {/* grid and flex */}
-                    {/* <div>
-                    <div className="">
-                        <h4 className="">Weekend’s</h4>
-                        <h1>Special</h1>
-                        <h5 className="">Dinner For You............</h5>
-                        <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                        <p>Lorem Ipsum is simply dummy text of the printing and unknown printer typesetting industry. </p>
-                    </div>
-                </div> */}
                 </section>
             </main>
         </motion.div>
